@@ -3,6 +3,31 @@
 ブリッジプライオリティが一番小さいため
 
 問2
+Switch3
+E0/1:DP
+E0/2:DP
+ルートブリッジの全てのポートは必ず指定ポートになるため
+
+Switch1
+F0/2:RP
+F0/1:BP
+switch1-switch3はショートパスコストが100のためRP
+何の役割も与えられていないF0/1がBP
+
+Switch4
+E0/2:RP
+E0/1:DP
+switch4-switch3はショートパスコストが100のためRP
+送信元スイッチのブリッジIDが小さいSwitch4のE0/1をDP
+
+Switch2
+F0/2:RP
+F0/1:DP
+F0/2はSwitch4のE0/1がDPのため向かいはRP
+送信元スイッチのブリッジIDが小さいSwitch2のF0/1をDP
+
+
+
 ・switch1からルートブリッジであるswitch3への経路
 switch1-switch3=100
 switch1-switch2-switch4-switch3=19＋100＋100=219
@@ -15,10 +40,3 @@ switch4＋switch2＋switch1＋switch3=100＋19＋100=219
 
 switch1-switch3とswitch4-switch3
 switch1switch2とswitch2-switch4がルートポート(PR)
-ルートパスコストが小さく、ルートブリッジ以外の各スイッチにおいて1つのポートがルートポートになるため
-
-switch3-switch1とswitch3-switch4
-switch2-switch1とswitch4-switch2が指定ポート(DP)
-ルートブリッジの全てのポートは必ず指定ポートになり
-向かいのポートは必ず指定ポートになるため
-
